@@ -68,13 +68,3 @@ for (var i = 0; i &lt; paragraphs.length; i++) {
   var paragraph = paragraphs.item(i);
   paragraph.style.setProperty("color", "white", null);
 }</code></pre> -->
-
-
-
-<!--
-https://docs.python.org/3.0/whatsnew/3.0.html
-[... for var in item1, item2, ...]. Use [... for var in (item1, item2, ...)] 
-
-Changes already present in 2.6 from 3.0
--->
-
