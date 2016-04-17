@@ -1,29 +1,24 @@
-
-
-
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>
-      Python 3.0
-    </title>
+    <title>Python 3.0</title>
+    <link rel="stylesheet" href="css/style.css"\>
   </head>
-
+  <style src="/css/style.css"></style>
+  <div align="center"><h1> Python 3.0 </h1></div> 
   <body>  
-      <div id="sectionaltitle"> Introduction </div>
+      <div class="sectionaltitle"> Introduction </div>
       <!-- Python's history and interests -->
 <br>Why is Python 3.0 interesting?
 <br>
 <p>
-[History and reasons why Python was made] Python is a really simple user friendly language. The user doesn't have to concern himself with the smaller details. For example, he doesn’t have to worry about memory allocation like in C, which Python is made from.
+Python is a really simple user friendly language. The user doesn't have to concern himself with the smaller details. For example, he doesn’t have to worry about memory allocation like in C, which Python is made from.
 Because of the large community willing to support Python, it likely will continue to be an important programming language.
-Why was Python 2.0 abandoned for 3.0?
+Why was Python 2.0 abandoned for 3.0? 
 They wanted to remove all duplicate structures and functions to align more with "There should be one- and preferably only one -obvious way to do it, meaning they wanted to streamline the usage so that everyone would do things in the same way."
 </p>
 
-      <div id="sectionaltitle"> Background on Problems </div> 
+      <div class="sectionaltitle"> Background on Problems </div> 
       <!-- title may change -->
       <!-- Why abandon Python 2, what the problems and reasons -->
 <br>What are some hindrances caused by Python 3.0?
@@ -35,28 +30,55 @@ This in turn causes people with large python 2.0 projects to have broken code in
 
   </body>
  
-  <body> <!-- changes --> 
-      <div id="sectionaltitle"> Changes </div>
-      <!-- Syntac Change -->
-<br>What's extremely different?
-<p>Examples of what we know that are now different
-Combined the str and unicode into a separate structure byte. Str and Unicode were extremely similar, 'Hi' vs u'Hi', there was no real difference between those two besides how they were made; str were created by the program, while unicode, though it can be created, generally came from an outside source, like a website.
-Give an example of this
-</p>  
+  <body>
+      <div class="sectionaltitle"> Changes </div>
+  <p>
+	8-bit strings and Unicode, 'hi' and u'hi', have been replaced with text and binary, 'hi' and b'hi'.
+	<br>
 
-<body> <!-- sources --> 
-      <div id="sectionaltitle"> Sources </div>
-      <!-- Syntac Change -->
-<br>
-<p>
-https://asmeurer.github.io/python3-presentation/slides.html
-http://www.dwheeler.com/essays/python3-in-python2.html
-https://docs.python.org/3.0/whatsnew/3.0.html
-</p>
-	<!--CODE EXAMPLES>
-    <!-- more changes and more code examples -->
+	They look similar, but unlike strings and unicode, text and binary CANNOT be combined. Any attempts to do so will meet an error.
+	The reason this change was made lies in the problem with combining strings and unicode. Generally, unicode comes from an outside source, like a website.
+	Because they come from outside, they may contain non-ASCII characters. On the other hand, strings are called 8-bit strings because they're 8 bits, they cannot handle anything more.
+	In most cases the, unicode and strings could be combined freely because they only had ASCII characters. However, once the unicode had other things, an error would be thrown. 
+	These errors would be really annoying to debug, because they're only raised in some cases while not in others.
+	By seperating them, it is much easier to debug.
+	<br> They can be converted to the other with bytes(s, encoding=...) or str(b, encoding=...).
+    </p>
   </body>
   
+  </body>
+  
+  <body>
+      <div class="sectionaltitle"> Other Changes: </div>
+  <p>
+    <ul>
+	<li> Python 3.0's int is Python 2.0's long </li>
+	<li> Python is no longer lazy:
+	    <ul><li> 1/2 returns a float, 0.5 </li>
+	    <li> 1//2 returns 0 </li> </ul> </li>
+    </ul>
+  </p>
+  </body>
+
+  <body>
+  Fortunately, there exists such a function called 2to3. It will convert your Python 2.0 code to Python 3.0 code for you. However, nothing is perfect, it will only fix the majority of it. There will probably be some parts that you will still need to manually fix. On the brightside, you can customize it to fit you program.
+  </body>  
+  <br>
+  <br>
+  <body>
+  Try out Python 3.0: <a href="https://repl.it/languages/python3">https://repl.it/languages/python3</a>
+  </body>
+<body>
+<br>	
+      <!--<div class="sectionaltitle"> Sources </div>-->
+<p>
+
+Sources: <br>
+https://asmeurer.github.io/python3-presentation/slides.html <br>
+http://www.dwheeler.com/essays/python3-in-python2.html <br>
+https://docs.python.org/3.0/whatsnew/3.0.html <br>
+</p>
+</body>
   
 </html>
 
@@ -78,10 +100,6 @@ https://docs.python.org/3.0/whatsnew/3.0.html
 Changes already present in 2.6 from 3.0
 
 https://www.python.org/dev/peps/pep-3101/ - %
-
-add example of long and int
-
-example of 2to3
 
 ”
 …
