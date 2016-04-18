@@ -25,24 +25,25 @@ They wanted to remove all duplicate structures and functions to align more with 
 <p>
 According to David A.Wheeler Phd in Information Technologies, Python 3.0 is an improvement, however developers made a large mistake not making 2.0 and 3.0 into a single executable
 This was a mistake because not all python 2.0 libraries are supported in python 3.0, and many pieces of software use libraries that use libraries that use ..... (etc) to function.
-This in turn causes people with large python 2.0 projects to have broken code in the python 2.0 to 3.0 conversion.
+This in turn causes people with large python 2.0 projects to have broken code in the python 2.0 to 3.0 conversion. However, there are reasons why these changes were made.
 </p>
 
   </body>
  
   <body>
-      <div class="sectionaltitle"> Changes </div>
+      <div class="sectionaltitle"> String and Unicode Replaced </div>
   <p>
-	8-bit strings and Unicode, 'hi' and u'hi', have been replaced with text and binary, 'hi' and b'hi'.
-	<br>
-
-	They look similar, but unlike strings and unicode, text and binary CANNOT be combined. Any attempts to do so will meet an error.
+	<ul>
+	<li>8-bit strings and Unicode, 'hi' and u'hi', have been replaced with text and binary, 'hi' and b'hi'.</li>
+	<li> They look similar, but unlike strings and unicode, text and binary CANNOT be combined. Any attempts to do so will meet an error. </li>
+	<li>They can be converted to the other with bytes(s, encoding=...) or str(b, encoding=...). </li>
+	</ul>
 	The reason this change was made lies in the problem with combining strings and unicode. Generally, unicode comes from an outside source, like a website.
 	Because they come from outside, they may contain non-ASCII characters. On the other hand, strings are called 8-bit strings because they're 8 bits, they cannot handle anything more.
 	In most cases the, unicode and strings could be combined freely because they only had ASCII characters. However, once the unicode had other things, an error would be thrown. 
 	These errors would be really annoying to debug, because they're only raised in some cases while not in others.
 	By seperating them, it is much easier to debug.
-	<br> They can be converted to the other with bytes(s, encoding=...) or str(b, encoding=...).
+	<br> In the end, for convenience sake, most people will still refer to them as strings.
     </p>
   </body>
   
@@ -56,12 +57,17 @@ This in turn causes people with large python 2.0 projects to have broken code in
 	<li> Python is no longer lazy:
 	    <ul><li> 1/2 returns a float, 0.5 </li>
 	    <li> 1//2 returns 0 </li> </ul> </li>
+	<li> String Formatting:
+	    <ul><li> % is being deprecated, because it is binary, it can only do one thing at a time </li>
+	    <li> Python wants you to use the string.Template module instead </li></ul> </li>
+        <li> Syntax form of [... for var in item1, item2, ...] has been erased. <br>
+	     Use [... for var in (item1, item2, ...)] </li>
     </ul>
   </p>
   </body>
 
   <body>
-  Fortunately, there exists such a function called 2to3. It will convert your Python 2.0 code to Python 3.0 code for you. However, nothing is perfect, it will only fix the majority of it. There will probably be some parts that you will still need to manually fix. On the brightside, you can customize it to fit you program.
+  When you need to convert your code, fortunately, there exists such a function called 2to3. It will convert your Python 2.0 code to Python 3.0 code for you. However, nothing is perfect, it will only fix the majority of it. There will probably be some parts that you will still need to manually fix. On the brightside, you can customize it to fit you program.
   </body>  
   <br>
   <br>
@@ -91,15 +97,10 @@ for (var i = 0; i &lt; paragraphs.length; i++) {
   paragraph.style.setProperty("color", "white", null);
 }</code></pre> -->
 
-
-
 <!--
-https://docs.python.org/3.0/whatsnew/3.0.html
 [... for var in item1, item2, ...]. Use [... for var in (item1, item2, ...)] 
 
 Changes already present in 2.6 from 3.0
-
-https://www.python.org/dev/peps/pep-3101/ - %
 
 ”
 …
