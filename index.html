@@ -38,9 +38,17 @@ This in turn causes people with large python 2.0 projects to have broken code in
 	<li> They look similar, but unlike strings and unicode, text and binary CANNOT be combined. Any attempts to do so will meet an error. </li>
 	<li>They can be converted to the other with bytes(s, encoding=...) or str(b, encoding=...). </li>
 	</ul>
-	The reason this change was made lies in the problem with combining strings and unicode. Generally, unicode comes from an outside source, like a website.
+	The reason this change was made lies in the problem with combining strings and unicode. In Python 2, this work:
+<div id="test1"><pre><code>text1 = 'Hello '
+text2 = u'World'
+print text1+text2</code></pre></div>
+	In Python 3, the equivalent doesn't: 
+<div id="test1"><pre><code>text1 = 'Hello '
+text2 = b'World'
+print( text1 + text2 )</code></pre></div>
+	Generally, unicode comes from an outside source, like a website.
 	Because they come from outside, they may contain non-ASCII characters. On the other hand, strings are called 8-bit strings because they're 8 bits, they cannot handle anything more.
-	In most cases the, unicode and strings could be combined freely because they only had ASCII characters. However, once the unicode had other things, an error would be thrown. 
+	In most cases, unicode and strings could be combined freely because they only had ASCII characters. However, once the unicode had other things, an error would be thrown.
 	These errors would be really annoying to debug, because they're only raised in some cases while not in others.
 	By seperating them, it is much easier to debug.
 	<br> In the end, for convenience sake, most people will still refer to them as strings.
@@ -54,14 +62,15 @@ This in turn causes people with large python 2.0 projects to have broken code in
   <p>
     <ul>
 	<li> Python 3.0's int is Python 2.0's long </li>
-	<li> Python is no longer lazy:
-	    <ul><li> 1/2 returns a float, 0.5 </li>
-	    <li> 1//2 returns 0 </li> </ul> </li>
+	<li> Python 3 is no longer lazy:
+	    <ul><li> <pre><code> 1/2 returns 0.5 </pre></code></li>
+	    <li> <pre><code> 1//2 returns 0 </pre></code> </li>
+	    <li> In Python 2, 1/2 would return a truncated behavior unless it was 1./2 or 1/2, and 1//2 would always return truncated. </ul> </li>
 	<li> String Formatting:
 	    <ul><li> % is being deprecated, because it is binary, it can only do one thing at a time </li>
 	    <li> Python wants you to use the string.Template module instead </li></ul> </li>
-        <li> Syntax form of [... for var in item1, item2, ...] has been erased. <br>
-	     Use [... for var in (item1, item2, ...)] </li>
+        <li> Syntax form of <code>[... for var in item1, item2, ...]</code> has been erased. <br>
+	     Use <code>[... for var in (item1, item2, ...)] </code></li> instead.
     </ul>
   </p>
   </body>
@@ -78,18 +87,18 @@ This in turn causes people with large python 2.0 projects to have broken code in
 <br>	
       <!--<div class="sectionaltitle"> Sources </div>-->
 <p>
-
+<hr>
 Sources: <br>
-https://asmeurer.github.io/python3-presentation/slides.html <br>
-http://www.dwheeler.com/essays/python3-in-python2.html <br>
-https://docs.python.org/3.0/whatsnew/3.0.html <br>
+<a href="https://asmeurer.github.io/python3-presentation/slides.html">https://asmeurer.github.io/python3-presentation/slides.html</a> <br>
+<a href="http://www.dwheeler.com/essays/python3-in-python2.html"> http://www.dwheeler.com/essays/python3-in-python2.html <br>
+<a href="https://docs.python.org/3.0/whatsnew/3.0.html"> https://docs.python.org/3.0/whatsnew/3.0.html</a> <br>
 </p>
 </body>
   
 </html>
 
 <!-- try it out your self: https://repl.it/ -->
-
+<pre><code></code></pre>
 <!--  The following can be used to display code
 <pre><code>var paragraphs = document.getElementsByTagName("p");
 for (var i = 0; i &lt; paragraphs.length; i++) {
